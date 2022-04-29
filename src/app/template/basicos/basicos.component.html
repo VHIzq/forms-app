@@ -38,7 +38,7 @@
             min="0"
             >
             <span
-            class="text-danger"
+            class="text-danger form-text"
             *ngIf="precioValido()">
               El precio debe ser mayor o igual a cero
           </span>
@@ -66,8 +66,9 @@
           <button
             type="submit"
             class="btn btn-primary float-end"
-            [disabled]="miFormulario.invalid"
-            >Checkout</button>
+            [disabled]="miFormulario.invalid">
+            Checkout
+          </button>
         </div>
       </div>
 
