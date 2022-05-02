@@ -1,1 +1,95 @@
-<p>basicos works!</p>
+<h2>Reactivos: Basicos</h2>
+<hr>
+
+<div class="row">
+  <div class="col">
+    <form
+      [formGroup]="miFormulario"
+      autocomplete="off">
+
+      <!-- *productos -->
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label ">Producto</label>
+        <div class="col-sm-9">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="nombre"
+            placeholder="Nombre del producto">
+            <span
+            class="text-danger form-text">
+              Debe contener al menos tres carácteres
+          </span>
+        </div>
+
+      </div>
+
+
+      <!-- input precio -->
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label ">Precio</label>
+        <div class="col-sm-9">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Precio del producto"
+            formControlName="precio">
+            <span
+            class="text-danger form-text">
+              El precio debe ser mayor o igual a cero
+          </span>
+        </div>
+      </div>
+
+
+      <!-- input existencias -->
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label ">Unidades disponibles</label>
+        <div class="col-sm-9">
+          <input
+            type="number"
+            class="form-control"
+            formControlName="existencias"
+            placeholder="Unidades del producto">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button
+            type="submit"
+            [disabled]="miFormulario.invalid"
+            class="btn btn-primary float-end">
+            Checkout
+          </button>
+        </div>
+      </div>
+
+  </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+
+    <span>Valid</span>
+    <pre>
+      {{ miFormulario.valid }}
+    </pre>
+
+    <span>Pristine</span>
+    <pre>
+      {{ miFormulario.pristine }}
+    </pre>
+
+    <span>Touched</span>
+    <pre>
+      {{ miFormulario.touched }}
+    </pre>
+
+    <span>Value</span>
+    <pre>
+      {{ miFormulario.value | json }}
+    </pre>
+
+  </div>
+</div>
