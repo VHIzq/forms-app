@@ -1,4 +1,4 @@
-import { Component,  } from '@angular/core';
+import { Component, OnInit,  } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, Validator } from '@angular/forms';
 
 @Component({
@@ -7,7 +7,7 @@ import { FormBuilder, FormControl, FormGroup, Validators, Validator } from '@ang
   styles: [
   ]
 })
-export class BasicosComponent {
+export class BasicosComponent implements OnInit {
   /* Formulario se puede crear con el servicio FormBuilder */
   /* miFormulario: FormGroup = new FormGroup({
     'nombre': new FormControl('RTX 4080TI'),
@@ -16,11 +16,33 @@ export class BasicosComponent {
   }); */
 
   miFormulario: FormGroup = this.formBuilder.group({
-    nombre: [ 'RTX 4080Ti', [ Validators.required, Validators.minLength(3) ] ],
-    precio: [ 0, [ Validators.required, Validators.min(10) ] ],
-    existencias: [ 5, [Validators.required, Validators.min(0)] ],
+    nombre: [ , [ Validators.required, Validators.minLength(3) ] ],
+    precio: [ , [ Validators.required, Validators.min(0) ] ],
+    existencias: [ , [Validators.required, Validators.min(0)] ]
   })
-  constructor( private formBuilder: FormBuilder ) {
+  constructor( private formBuilder: FormBuilder ) {}
 
+  ngOnInit(): void {
+    this.miFormulario.reset({
+      nombre: 'MSI Katana',
+      precio: 1600,
+      existencias: 3
+    })
+  }
+
+  validarCampo( campo: string ) {
+    return this.miFormulario.controls[campo]?.errors
+            && this.miFormulario.controls[campo]?.touched
+  }
+
+  guardar() {
+
+    if ( this.miFormulario.invalid ) {
+
+      this.miFormulario.markAllAsTouched();
+      return;
+    }
+    console.log(this.miFormulario.value );
+    this.miFormulario.reset();
   }
 }
