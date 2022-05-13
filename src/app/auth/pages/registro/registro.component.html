@@ -40,7 +40,7 @@
             <span
             *ngIf="campoNoValido('email')"
             class="form-text text-danger">
-            Introduce un email valido
+              {{ emailErrorMsg }}
           </span>
         </div>
       </div>
@@ -55,8 +55,7 @@
             placeholder="Nickname del usuario"
             class="form-control">
 
-            <span
-            *ngIf="campoNoValido('username')"
+            <span *ngIf="campoNoValido('username')"
             class="form-text text-danger">
             Username no valido.
           </span>
@@ -102,6 +101,7 @@
       <div class="row">
         <div class="col">
           <button type="submit"
+          [disabled]="miFormulario.pending"
             class="btn btn-primary float-end">
             Crear
           </button>
@@ -113,6 +113,7 @@
 
 <h2> Form Valid: {{ miFormulario.valid }} </h2>
 <h2> Form Status: {{ miFormulario.status }} </h2>
+<h2> Form Pending: {{ miFormulario.pending }} </h2>
 
 <h2> Form Errors:  </h2>
 <pre>

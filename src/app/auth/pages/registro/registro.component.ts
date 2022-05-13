@@ -41,6 +41,23 @@ export class RegistroComponent implements OnInit {
     }
   );
 
+  get emailErrorMsg(): string {
+
+    const errors = this.miFormulario.get('email')?.errors;
+
+    if( errors?.['required'] ) {
+      return 'El email es obligatorio.'
+    }
+    if( errors?.['pattern']) {
+      return 'El email debe estar en un formato valido.'
+    }
+    if( errors?.['emailExistente']) {
+      return 'El email ya se encuentra asociado a una cuenta.'
+    }
+
+    return '';
+  }
+
   constructor(
     private fb: FormBuilder,
     private validatorService: ValidatorService,
@@ -52,10 +69,15 @@ export class RegistroComponent implements OnInit {
       nombre: 'Kaoru Tanamachi',
       email: 'test1@test.com',
       username: 'TestUser',
+      password: '123456',
+      password2: '123456',
+
     });
   }
 
-  campoNoValido( campo: string) {
+
+
+  campoNoValido( campo: string ) {
     return this.miFormulario.get(campo)?.invalid
             && this.miFormulario.get(campo)?.touched;
   }
