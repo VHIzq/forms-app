@@ -41,6 +41,7 @@
             *ngIf="campoNoValido('email')"
             class="form-text text-danger">
               {{ emailErrorMsg }}
+            Introduce un email valido
           </span>
         </div>
       </div>
@@ -55,10 +56,12 @@
             placeholder="Nickname del usuario"
             class="form-control">
 
-            <span *ngIf="campoNoValido('username')"
+            <span *ngIf="campoNoValido('username')">
+
+            *ngIf="campoNoValido('username')"
             class="form-text text-danger">
             Username no valido.
-          </span>
+            </span>
         </div>
       </div>
 
